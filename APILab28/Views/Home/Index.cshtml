@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (ViewBag.Error != null)
+{
+    <div>
+        <h2>Error: Status @ViewBag.Error</h2>
+        @ViewBag.ErrorDescription
+        <br />
+        @ViewBag.Data
+    </div>
+}
+else
+{
+    <h2>Deck of Cards</h2>
+  <div>  
+      <button onclick="DrawFive()">DRAW FIVE</button>
+
+      <script>
+          function DrawFive(@ViewBag.DeckID)
+          {
+              location.reload();
+          }
+      </script>
+    
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th width="20%">Value</th>
+                <th width="20%">Suit</th>
+                <th width="60%">Card</th>
+                
+            </tr>
+            @for (int i = 0; i < ViewBag.Cards.Count; i++)
+            {
+                <tr>
+                    <td>@ViewBag.Cards[i].suit</td>
+                    <td>@ViewBag.Cards[i].value</td>
+                    
+                    <td>
+                        <img src="@ViewBag.Cards[i].image"
+                             height="120" width="120" />
+                    </td>
+                    
+                </tr>
+            }
+        </table>
+
+    </div>
+
+}
+@*<script>
+function toggleMoreInfo(fieldNumber) {
+        if (document.getElementById('text-' + fieldNumber).style.display
+            == "none") {
+            document.getElementById('text-' + fieldNumber).style.display = 'block';
+            document.getElementById('link-' + fieldNumber).innerHTML = 'Hide';
+        } else {
+            document.getElementById('text-' + fieldNumber).style.display = 'none';
+            document.getElementById('link-' + fieldNumber).innerHTML = 'Show more';
+        }
+    }</script>*@
