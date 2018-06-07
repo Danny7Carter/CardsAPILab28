@@ -66,7 +66,7 @@ namespace APILab28.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your contact page..";
 
             return View();
         }
