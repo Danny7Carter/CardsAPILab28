@@ -13,39 +13,44 @@
 else
 {
     <h2>Deck of Cards</h2>
-  <div>  
-      <button onclick="DrawFive()">DRAW FIVE</button>
+    <div>
+        <button onclick="DrawFive()">DRAW FIVE</button>
 
-      <script>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th width="15%">KeepOrDraw</th>
+                <th width="15%">Value</th>
+                <th width="15%">Suit</th>
+                <th width="35%">Card</th>
+
+            </tr>
+            @for (int i = 0; i < ViewBag.Cards.Count; i++)
+             {
+            <tr>
+                <td>
+                    <select>
+                        <option value="keep">Keep</option>
+                        <option value="draw">Draw</option>
+                    </select>
+                </td>
+                <td>@ViewBag.Cards[i].suit</td>
+                <td>@ViewBag.Cards[i].value</td>
+
+                <td>
+                    <img src="@ViewBag.Cards[i].image"
+                         height="120" width="120" />
+                </td>
+
+            </tr>
+             }
+        </table>
+
+        <script>
           function DrawFive(@ViewBag.DeckID)
           {
               location.reload();
           }
-      </script>
-    
-
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th width="20%">Value</th>
-                <th width="20%">Suit</th>
-                <th width="60%">Card</th>
-                
-            </tr>
-            @for (int i = 0; i < ViewBag.Cards.Count; i++)
-            {
-                <tr>
-                    <td>@ViewBag.Cards[i].suit</td>
-                    <td>@ViewBag.Cards[i].value</td>
-                    
-                    <td>
-                        <img src="@ViewBag.Cards[i].image"
-                             height="120" width="120" />
-                    </td>
-                    
-                </tr>
-            }
-        </table>
-
+        </script>
     </div>
 
 }
